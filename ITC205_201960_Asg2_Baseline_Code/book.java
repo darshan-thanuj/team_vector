@@ -11,7 +11,7 @@ public class Book implements Serializable {
 	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private State state;
 	
-	// Just for testing ...
+
 	public Book(String author, String title, String callNo, int id, State state) {
 		this.author = author;
 		this.title = title;
@@ -19,7 +19,7 @@ public class Book implements Serializable {
 		this.id = id;
 		this.state = state;
 	}
-	// Just for testing ...
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Book: ").append(id).append("\n")
