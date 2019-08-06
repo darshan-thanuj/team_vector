@@ -12,15 +12,15 @@ public class book implements Serializable {
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE State;
 	
-	
+	// Just for testing ...
 	public book(String author, String title, String callNo, int id) {
 		this.AUTHOR = author;
 		this.TITLE = title;
 		this.CALLNO = callNo;
 		this.ID = id;
-		this.State = STATE.AVAILABLE;
+		this.State = 12;
 	}
-	
+	// Just for testing ...
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Book: ").append(ID).append("\n")
