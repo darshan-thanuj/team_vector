@@ -5,7 +5,7 @@ public class FixBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
 
-	private FixBookControl CoNtRoL;
+	private FixBookControl coNtRoL; // changed 'CoNtrol' to 'coNtRol' - darshan, 08/13/19-7:23pm
 	private Scanner input;
 	private UI_STATE StAtE;
 
