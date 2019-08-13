@@ -24,31 +24,31 @@ public class ReturnBookControl {
 	}
 
 
-	public void Book_scanned(int Book_ID) {
+	public void Book_Scanned(int Book_ID) {//changed Book_scanned to Book_Scanned--Dilkushi
 		if (!state.equals(CONTROL_STATE.READY)) {//changed sTaTe to state--Dilkushi
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
-		book CUR_book = library_.Book(Book_ID);//changed lIbRaRy to library_--Dilkushi
+		book cur_book = library_.Book(Book_ID);//changed lIbRaRy to library_--Dilkushi//changed CUR_book to cur_book--Dilkushi
 		
-		if (CUR_book == null) {
+		if (cur_book == null) {//changed CUR_book to cur_book--Dilkushi
 			Ui.display("Invalid Book Id");
 			return;
 		}
-		if (!CUR_book.On_loan()) {
+		if (!cur_book.On_loan()) {//changed CUR_book to cur_book--Dilkushi
 			Ui.display("Book has not been borrowed");
 			return;
 		}		
 		current_loan = library_.LOAN_BY_BOOK_ID(Book_ID);//changed CurrENT_loan to current_loan--Dilkushi //changed lIbRaRy to library_--Dilkushi	
-		double Over_Due_Fine = 0.0;
-		if (current_loan.OVer_Due()) {//changed CurrENT_loan to current_loan--Dilkushi	
-			Over_Due_Fine = library_.CalculateOverDueFine(current_loan);//changed CurrENT_loan to current_loan--Dilkushi //changed lIbRaRy to library_--Dilkushi	
+		double over_due_fine = 0.0;//changed Over_Due_Fine to over_due_fine--Dilkushi 
+		if (current_loan.Over_Due()) {//changed CurrENT_loan to current_loan--Dilkushi	//changed OVer_Due to Over_Due--Dilkushi	
+			over_due_fine = library_.CalculateOverDueFine(current_loan);//changed CurrENT_loan to current_loan--Dilkushi //changed lIbRaRy to library_--Dilkushi//changed Over_Due_Fine to over_due_fine--Dilkushi 	
 		}
 		Ui.display("Inspecting");
-		Ui.display(CUR_book.toString());
+		Ui.display(cur_book.toString());//changed CUR_book to cur_book--Dilkushi
 		Ui.display(current_loan.toString());//changed CurrENT_loan to current_loan--Dilkushi	
 		
-		if (current_loan.OVer_Due()) {//changed CurrENT_loan to current_loan--Dilkushi	
-			Ui.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
+		if (current_loan.Over_Due()) {//changed CurrENT_loan to current_loan--Dilkushi	//changed OVer_Due to Over_Due--Dilkushi	
+			Ui.display(String.format("\nOverdue fine : $%.2f", over_due_fine));//changed Over_Due_Fine to over_due_fine--Dilkushi 	
 		}
 		Ui.Set_State(ReturnBookUI.UI_STATE.INSPECTING);
 		state = CONTROL_STATE.INSPECTING;//changed sTaTe to state--Dilkushi		
@@ -63,11 +63,11 @@ public class ReturnBookControl {
 	}
 
 
-	public void Discharge_loan(boolean isDamaged) {
+	public void Discharge_Loan(boolean isDamaged) {//changed Discharge_loan to Discharge_Loan--Dilkushi
 		if (!state.equals(CONTROL_STATE.INSPECTING)) {//changed sTaTe to state--Dilkushi
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
-		lIbRaRy.Discharge_loan(current_loan, isDamaged);
+		library_.Discharge_Loan(current_loan, isDamaged);//changed Discharge_loan to Discharge_Loan--Dilkushi //changed lIbRaRy to library_--Dilkushi
 		current_loan = null;//changed CurrENT_loan to current_loan--Dilkushi	
 		Ui.Set_State(ReturnBookUI.UI_STATE.READY);
 		state = CONTROL_STATE.READY;	//changed sTaTe to state--Dilkushi			
