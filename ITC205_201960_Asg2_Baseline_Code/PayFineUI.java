@@ -20,16 +20,16 @@ public class PayFineUI {
 	
 	
 	public void Set_State(UI_STATE state) {
-		this.uiState = state; //Changed StAtE to uiState-dilkushi 2019/8/1 1.59pm
+		this.uiState = state; //Changed StAtE to uiState
 	}
 
 
-	public void RuN() {
+	public void Run() {//Changed RuN to Run
 		output("Pay Fine Use Case UI\n");
 		
 		while (true) {
 			
-			switch (uiState) {//Changed StAtE to uiState--dilkushi 2019/8/1 1.59pm
+			switch (uiState) {//Changed StAtE to uiState
 			
 			case READY:
 				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
@@ -39,7 +39,7 @@ public class PayFineUI {
 				}
 				try {
 					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					control.Card_Swiped(Member_ID);//Changed CoNtRoL to control-dilkushi 2019/8/1 1.59pm
+					control.Card_Swiped(Member_ID);//Changed CoNtRoL to control
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -47,21 +47,21 @@ public class PayFineUI {
 				break;
 				
 			case PAYING:
-				double AmouNT = 0;
+				double amount = 0;//Changed AmouNT to amount
 				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
 				if (Amt_Str.length() == 0) {
-					control.CaNcEl();//Changed CoNtRoL to control-dilkushi 2019/8/1 1.59pm
+					control.CaNcEl();//Changed CoNtRoL to control
 					break;
 				}
 				try {
-					AmouNT = Double.valueOf(Amt_Str).doubleValue();
+					amount = Double.valueOf(Amt_Str).doubleValue(); //Changed AmouNT to amount
 				}
 				catch (NumberFormatException e) {}
-				if (AmouNT <= 0) {
+				if (amount <= 0) {//Changed AmouNT to amount
 					output("Amount must be positive");
 					break;
 				}
-				CoNtRoL.PaY_FiNe(AmouNT);
+				control.Pay_Fine(amount);//Changed AmouNT to amount // Changed CoNtRoL to control //Changed PaY_FiNe to Pay_Fine
 				break;
 								
 			case CANCELLED:
@@ -92,7 +92,7 @@ public class PayFineUI {
 	}	
 			
 
-	public void DiSplAY(Object object) {
+	public void Display(Object object) {//Changed DiSplAY to Display
 		output(object);
 	}
 
