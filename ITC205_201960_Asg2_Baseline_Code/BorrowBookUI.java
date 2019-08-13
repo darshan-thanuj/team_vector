@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class BorrowBookUI {
 
-	public enum UiState { // Removed redundant static qualifier
+	public enum UiState { // Removed redundant static qualifier -Suchan, 08/13/19-8:30pm
 		INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED
 	}
 
 	private BorrowBookControl control;
 	private Scanner input;
-	private UiState state; // Renamed StaTe to state
+	private UiState state; // Renamed StaTe to state -Suchan, 08/13/19-8:30pm
 
 	public BorrowBookUI(BorrowBookControl control) {
 		this.control = control;
@@ -42,13 +42,13 @@ public class BorrowBookUI {
 				return;
 
 			case READY:
-				String memberString = input("Swipe member card (press <enter> to cancel): "); // Changed MEM_STR to memberString
+				String memberString = input("Swipe member card (press <enter> to cancel): "); // Changed MEM_STR to memberString -Suchan, 08/13/19-8:30pm
 				if (memberString.length() == 0) {
 					control.cancel();
 					break;
 				}
 				try {
-					int memberId = Integer.valueOf(memberString).intValue(); // Changed Member_Id to memberId
+					int memberId = Integer.valueOf(memberString).intValue(); // Changed Member_Id to memberId -Suchan, 08/13/19-8:30pm
 					control.swiped(memberId);
 				} catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -61,13 +61,13 @@ public class BorrowBookUI {
 				break;
 
 			case SCANNING:
-				String bookString = input("Scan Book (<enter> completes): "); // Changed Book_Str to bookString
+				String bookString = input("Scan Book (<enter> completes): "); // Changed Book_Str to bookString -Suchan, 08/13/19-8:30pm
 				if (bookString.length() == 0) {
 					control.complete();
 					break;
 				}
 				try {
-					int bookId = Integer.parseInt(bookString); // Changed BiD to bookId,  Used "Integer.parseInt" for this string-to-int conversion
+					int bookId = Integer.parseInt(bookString); // Changed BiD to bookId,  Used "Integer.parseInt" for this string-to-int conversion -Suchan, 08/13/19-8:30pm
 					control.scanned(bookId);
 
 				} catch (NumberFormatException e) {
@@ -76,12 +76,12 @@ public class BorrowBookUI {
 				break;
 
 			case FINALISING:
-				String answer = input("Commit loans? (Y/N): "); // Changed Ans to answer
-				if (answer.equalsIgnoreCase("N")) { // Replace these toUpperCase() and equals() calls with a single equalsIgnoreCase()
+				String answer = input("Commit loans? (Y/N): "); // Changed Ans to answer -Suchan, 08/13/19-8:30pm
+				if (answer.equalsIgnoreCase("N")) { // Replace these toUpperCase() and equals() calls with a single equalsIgnoreCase() -Suchan, 08/13/19-8:30pm
 					control.cancel();
 
 				} else {
-					control.commitLoans(); // Changed Commit_LOans to commitLoans
+					control.commitLoans(); // Changed Commit_LOans to commitLoans -Suchan, 08/13/19-8:30pm
 					input("Press <any key> to complete ");
 				}
 				break;
@@ -97,7 +97,7 @@ public class BorrowBookUI {
 		}
 	}
 
-	public void display(Object object) { // Changed Display to display
+	public void display(Object object) { // Changed Display to display -Suchan, 08/13/19-8:30pm
 		output(object);
 	}
 

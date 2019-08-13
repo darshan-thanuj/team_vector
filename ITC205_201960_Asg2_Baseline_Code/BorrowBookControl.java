@@ -3,26 +3,26 @@ import java.util.List;
 
 public class BorrowBookControl {
 
-	private BorrowBookUI ui; //Renamed UI to ui
-	private Library library; //Renamed LIBRARY to library
-	private Member member; // Renamed M to member
+	private BorrowBookUI ui; //Renamed UI to ui  -Suchan, 08/13/19-8:00pm
+	private Library library; //Renamed LIBRARY to library -Suchan, 08/13/19-8:00pm
+	private Member member; // Renamed M to member -Suchan, 08/13/19-8:00pm
 
-	private enum ControlState { // Renamed CONTROL_STATE to ControlState
+	private enum ControlState { // Renamed CONTROL_STATE to ControlState -Suchan, 08/13/19-8:00pm
 		INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED
 	}
 
-	private ControlState state; // Renamed State to state
+	private ControlState state; // Renamed State to state -Suchan, 08/13/19-8:00pm
 
-	private List<Book> pending; // Renamed PENDING to pending
-	private List<Loan> completed; // Renamed COMPLETED to completed
-	private Book book; // Renamed BOOK to book and Class name book to Book
+	private List<Book> pending; // Renamed PENDING to pending -Suchan, 08/13/19-8:00pm
+	private List<Loan> completed; // Renamed COMPLETED to completed -Suchan, 08/13/19-8:00pm
+	private Book book; // Renamed BOOK to book and Class name book to Book -Suchan, 08/13/19-8:00pm
 
 	public BorrowBookControl() {
-		this.library = library.instance(); // INSTANCE to instance
+		this.library = library.instance(); // INSTANCE to instance -Suchan, 08/13/19-8:00pm
 		this.state = ControlState.INITIALISED;
 	}
 
-	public void setUI(BorrowBookUI ui) { // Change variable name according to declaration
+	public void setUI(BorrowBookUI ui) { // Change variable name according to declaration -Suchan, 08/13/19-8:00pm
 		if (!this.state.equals(ControlState.INITIALISED))
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 
@@ -31,18 +31,18 @@ public class BorrowBookControl {
 		this.state = ControlState.READY;
 	}
 
-	public void swiped(int memberId) { // Changed Swiped to swiped
+	public void swiped(int memberId) { // Changed Swiped to swiped -Suchan, 08/13/19-8:00pm
 		if (!this.state.equals(ControlState.READY))
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 
-		this.member = library.getMember(memberId); // M to this.m , MEMBER to getMember
+		this.member = library.getMember(memberId); // M to this.m , MEMBER to getMember -Suchan, 08/13/19-8:00pm
 		if (this.m == null) {
 			this.ui.display("Invalid memberId");
 			return;
 		}
-		if (library.memberCanBorrow(this.member)) { // Changed MEMBER_CAN_BORROW to memberCanBorrow
+		if (library.memberCanBorrow(this.member)) { // Changed MEMBER_CAN_BORROW to memberCanBorrow -Suchan, 08/13/19-8:00pm
 			this.pending = new ArrayList<>();
-			this.ui.setState(BorrowBookUI.UI_STATE.SCANNING); // Changed Set_State to setState
+			this.ui.setState(BorrowBookUI.UI_STATE.SCANNING); // Changed Set_State to setState -Suchan, 08/13/19-8:00pm
 			this.state = ControlState.SCANNING;
 		} else {
 			this.ui.display("Member cannot borrow at this time");
@@ -50,7 +50,7 @@ public class BorrowBookControl {
 		}
 	}
 
-	public void scanned(int bookId) {  // Changed Scanned to scan
+	public void scanned(int bookId) {  // Changed Scanned to scan -Suchan, 08/13/19-8:00pm
 		this.book = null;
 		if (!this.state.equals(ControlState.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
@@ -68,7 +68,7 @@ public class BorrowBookControl {
 		for (Book b : this.pending) {
 			this.ui.display(b.toString());
 		}
-		if (library.loansRemainingForMember(this.member) - this.pending.size() == 0) { // changed Loans_Remaining_For_Member to loansRemainingForMember
+		if (library.loansRemainingForMember(this.member) - this.pending.size() == 0) { // changed Loans_Remaining_For_Member to loansRemainingForMember -Suchan, 08/13/19-8:00pm
 			this.ui.display("Loan limit reached");
 			complete();
 		}
