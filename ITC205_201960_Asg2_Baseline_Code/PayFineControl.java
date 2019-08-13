@@ -2,7 +2,7 @@ public class PayFineControl {
 	
 	private PayFineUI Ui;
 	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-		private CONTROL_STATE state_;//Changed StAtE to state_
+		private CONTROL_STATE StAtE
 	
 	private library library_;//Changed LiBrArY to library_
 	private member member_;//Changed MeMbEr to member_
