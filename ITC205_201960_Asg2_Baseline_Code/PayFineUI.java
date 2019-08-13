@@ -8,19 +8,19 @@ public class PayFineUI {
 
 	private PayFineControl CoNtRoL;
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UI_STATE uiState;//Changed StAtE to uiState
 
 	
 	public PayFineUI(PayFineControl control) {
 		this.CoNtRoL = control;
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
+		uiState = UI_STATE.INITIALISED;//Changed StAtE to uiState--dilkushi 2019/8/1 1.59pm
 		control.Set_UI(this);
 	}
 	
 	
 	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+		this.uiState = state; //Changed StAtE to uiState-dilkushi 2019/8/1 1.59pm
 	}
 
 
@@ -29,17 +29,17 @@ public class PayFineUI {
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (uiState) {//Changed StAtE to uiState--dilkushi 2019/8/1 1.59pm
 			
 			case READY:
 				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
 				if (Mem_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+					control.CaNcEl();  //Changed CoNtRoL to control
 					break;
 				}
 				try {
 					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					CoNtRoL.Card_Swiped(Member_ID);
+					control.Card_Swiped(Member_ID);//Changed CoNtRoL to control-dilkushi 2019/8/1 1.59pm
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -50,7 +50,7 @@ public class PayFineUI {
 				double AmouNT = 0;
 				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
 				if (Amt_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+					control.CaNcEl();//Changed CoNtRoL to control-dilkushi 2019/8/1 1.59pm
 					break;
 				}
 				try {
