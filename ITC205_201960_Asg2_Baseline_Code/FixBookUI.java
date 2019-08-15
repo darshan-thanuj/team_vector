@@ -53,7 +53,7 @@ public class FixBookUI {
 				if (anS.toUpperCase().equals("Y")) { //changed 'AnS' to 'anS' - darshan,08/15/19-5:48pm
 					fiX = true;//changed 'FiX' to 'fiX' -darshan,08/15/19 - 5:49 pm
 				}
-				CoNtRoL.fIX_Book(FiX);// changed 'FIX_Book' to 'fIX_Book' -darshan,08/15/19-5:54pm
+				CoNtRoL.fIX_Book(fiX);// changed 'FIX_Book' to 'fIX_Book' -darshan,08/15/19-5:54pm
 				break;
 								
 				case cOMPLETED://changed 'COMPLETED' to 'cOMPLETED' -darshan,08/15/19-5:56pm
