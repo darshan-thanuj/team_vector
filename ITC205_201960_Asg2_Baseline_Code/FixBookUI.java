@@ -7,7 +7,7 @@ public class FixBookUI {
 
 	private FixBookControl coNtRoL; // changed 'CoNtrol' to 'coNtRol' - darshan, 08/13/19-7:23pm
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UI_STATE stAtE;// changed 'StAtE' to 'stAtE'-darshan,08/15/19-5.03pm
 
 	
 	public FixBookUI(FixBookControl control) {
