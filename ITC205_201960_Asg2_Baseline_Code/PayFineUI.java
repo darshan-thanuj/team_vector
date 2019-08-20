@@ -61,7 +61,7 @@ public class PayFineUI {
 					output("Amount must be positive");
 					break;
 				}
-				coNtRoL.PaY_FiNe(AmouNT);//Changed CoNtRoL to coNtRoL -Dilkushi at 21.19pm
+				coNtRoL.PaY_FiNe(AmouNT);//Changed CoNtRoL to coNtRoL -Dilkushi at 21.52pm
 				break;
 								
 			case CANCELLED:
