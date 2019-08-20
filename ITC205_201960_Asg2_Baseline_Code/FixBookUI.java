@@ -30,9 +30,9 @@ public class FixBookUI {
 			
 			switch (stAtE) {// changed 'StAte' to 'stAtE' - darshan, 08/15/19 -5:33 pm
 			
-				case rEADY://changed 'READY' to 'rEADY' -darshan,08/15/19 -5:34 pm
+				case rEADY://changed 'READY' to 'rEADY' -darshan,08/15/19 -9:34 pm
 				String book_STR = input("Scan Book (<enter> completes): ");// changed 'Book_STR' to 'book_STR'-darshan,08/15/19-5:35 pm
-				if (book_STR.length() == 0) { // changed 'Book_STR' to 'book_STR' -darshan,08/15/19 -5:36pm
+				if (book_STR.length() == 0) { // changed 'Book_STR' to 'book_STR' -darshan,08/15/19 -6:36pm
 					CoNtRoL.SCannING_COMplete();
 				}
 				else {
