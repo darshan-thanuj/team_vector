@@ -24,32 +24,32 @@ public class library implements Serializable {
 	private static final double damageFee = 2.0;
 	
 	private static library SeLf;
-	private int BOOK_ID;
-	private int MEMBER_ID;
-	private int LOAN_ID;
-	private Date LOAN_DATE;
+	private int bookId;// changed BOOK_ID to bookId- darshan-08/20/2019
+	private int memberId;// changed MEMBER_ID memeberId - darshan-08/20/2019
+	private int loanId;// changed LOAN_ID to loanId - darshan-08/20/2019
+	private Date loanDate;// changed LOAN_DATE to loanDate-darshan-08/20/2019
 	
-	private Map<Integer, book> CATALOG;
-	private Map<Integer, member> MEMBERS;
-	private Map<Integer, loan> LOANS;
-	private Map<Integer, loan> CURRENT_LOANS;
-	private Map<Integer, book> DAMAGED_BOOKS;
+	private Map<Integer, book> catalog;// CATALOG changed to catalog-darshan-08/20/2019
+	private Map<Integer, member> members; // MEMEBERS changed to members-darshan-08/20/2019
+	private Map<Integer, loan> loans;//LOANS changed to loans -darshan-08/20/2019
+	private Map<Integer, loan> currentLoan;//CURRENT_LOANS changed to currentLoan-drashan-08/20/2019
+	private Map<Integer, book> damagedBook;//DAMAGED_BOOKS changed to damagedBook-drashan-08/20/2019
 	
 
 	private library() {
-		CATALOG = new HashMap<>();
-		MEMBERS = new HashMap<>();
-		LOANS = new HashMap<>();
-		CURRENT_LOANS = new HashMap<>();
-		DAMAGED_BOOKS = new HashMap<>();
-		BOOK_ID = 1;
-		MEMBER_ID = 1;		
-		LOAN_ID = 1;		
+		 catalog = new HashMap<>();// CATALOG changed to catalog-darshan-08/20/2019
+		 members = new HashMap<>();// MEMEBERS changed to members -darshan-08/20/2019
+		 loans= new HashMap<>();// LOANS CHANGED TO loan -drashan-08/20/2019
+		 currentLoan = new HashMap<>();//RRENRT_LOAN to currentLoan-drashan-08/20/2019
+		damagedBook = new HashMap<>();// DAMAGED_BOOKS to damagedBook-drashan-08/20/2019
+		bookId = 1;// changed BOOK_ID to bookId- darshan-08/20/2019
+		memberId = 1;// changed MEMBER_ID memeberId - darshan-08/20/2019		
+		loanId = 1;//LOAN_ID TO loanId-darshan-08/20/2019
 	}
 
 	
 	public static synchronized library INSTANCE() {		
-		if (SeLf == null) {
+		if (Self== null) {
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
