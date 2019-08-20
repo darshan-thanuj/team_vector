@@ -51,8 +51,8 @@ public class BorrowBookControl {
 	}
 
 	public void scanned(int bookId) {  // Changed Scanned to scan -Suchan, 08/13/19-8:00pm
-		this.book = null;
-		if (!this.state.equals(ControlState.SCANNING)) {
+		this.book = null; // Changed BOOK to this.book  -Suchan, 08/20/19-7:00pm
+		if (!this.state.equals(ControlState.SCANNING)) { // Changed StaTe to this.state  -Suchan, 08/20/19-7:00pm
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}
 		this.book = library.Book(bookId);
@@ -64,8 +64,8 @@ public class BorrowBookControl {
 			this.ui.display("Book cannot be borrowed");
 			return;
 		}
-		this.pending.add(this.book);
-		for (Book b : this.pending) {
+		this.pending.add(this.book); // Changed PENDING to this.pending  -Suchan, 08/20/19-8:00pm
+		for (Book b : this.pending) { // Changed book class name to Book  -Suchan, 08/20/19-8:00pm
 			this.ui.display(b.toString());
 		}
 		if (library.loansRemainingForMember(this.member) - this.pending.size() == 0) { // changed Loans_Remaining_For_Member to loansRemainingForMember -Suchan, 08/13/19-8:00pm
