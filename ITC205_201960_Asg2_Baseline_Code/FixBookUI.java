@@ -7,38 +7,39 @@ public class FixBookUI {
 
 	private FixBookControl coNtRoL; // changed 'CoNtrol' to 'coNtRol' - darshan, 08/13/19-7:23pm
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UI_STATE stAtE;// changed 'StAtE' to 'stAtE'-darshan,08/15/19-5.03pm
 
 	
-	public FixBookUI(FixBookControl control) {
-		this.CoNtRoL = control;
+	public fixBookUI(FixBookControl control) { // changed 'FixBookUI' to 'fixBookUI'-darshan, 08/15/19-5:27pm
+		this.coNtRoL = control;//changed 'CoNtrol' to 'coNtRol' - darshan, 08/15/19-5:14pm
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
+		stAtE = UI_STATE.INITIALISED;//changed 'StAtE' to 'stAtE' -darshan, 08/15/19-5:16pm 
 		control.Set_Ui(this);
 	}
 
 
-	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+	public void set_State(UI_STATE state) {
+		this.stAtE = state;//changed 'StAtE' to 'stAtE' -darshan, 08/15/19-5:20pm 
 	}
 
 	
-	public void RuN() {
+	public void ruN() { // changed 'RuN' to 'ruN' -darshan,08/15/19-5:31pm
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (stAtE) {// changed 'StAte' to 'stAtE' - darshan, 08/15/19 -5:33 pm
 			
-			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
+				case rEADY://changed 'READY' to 'rEADY' -darshan,08/15/19 -5:34 pm
+				String book_STR = input("Scan Book (<enter> completes): ");// changed 'Book_STR' to 'book_STR'-darshan,08/15/19-5:35 pm
+				if (book_STR.length() == 0) { // changed 'Book_STR' to 'book_STR' -darshan,08/15/19 -5:36pm
 					CoNtRoL.SCannING_COMplete();
 				}
 				else {
 					try {
-						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_ID);
+						int book_ID = Integer.valueOf(book_STR).intValue();// changed 'Book_ID' to 'book_ID' and 'Book_STR' 
+						                                                      //to 'book_STR' - darshan -5:40pm
+						CoNtRoL.Book_scanned(book_ID); // changed 'Book_ID' to 'book_ID' -darshan,08/15/19-5:43pm 
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -46,22 +47,22 @@ public class FixBookUI {
 				}
 				break;	
 				
-			case FIXING:
-				String AnS = input("Fix Book? (Y/N) : ");
-				boolean FiX = false;
-				if (AnS.toUpperCase().equals("Y")) {
-					FiX = true;
+				case fIXING: // changed 'FIXING' TO 'fIXING'-darshan,08/15/19-5:45pm
+				String anS = input("Fix Book? (Y/N) : ");//changed 'AnS' to 'anS' - darshan,08/15/19-5:47pm
+				boolean fiX = false; //changed 'FiX' to 'fiX' -darshan,08/15/19 - 5:48 pm
+				if (anS.toUpperCase().equals("Y")) { //changed 'AnS' to 'anS' - darshan,08/15/19-5:48pm
+					fiX = true;//changed 'FiX' to 'fiX' -darshan,08/15/19 - 5:49 pm
 				}
-				CoNtRoL.FIX_Book(FiX);
+				CoNtRoL.fIX_Book(fiX);// changed 'FIX_Book' to 'fIX_Book' -darshan,08/15/19-5:54pm
 				break;
 								
-			case COMPLETED:
+				case cOMPLETED://changed 'COMPLETED' to 'cOMPLETED' -darshan,08/15/19-5:56pm
 				output("Fixing process complete");
 				return;
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + stAtE);//changed 'StAtE' to 'stAtE'- darshan,08/15/19-5:57pm			
 			
 			}		
 		}
