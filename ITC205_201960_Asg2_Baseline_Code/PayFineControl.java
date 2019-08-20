@@ -8,13 +8,13 @@ public class PayFineControl {
 	private member meMbEr;//Changed MeMbEr to meMbEr --Dilkushi 12.18pm
 
 
-	public PayFineControl() {
+	public payFineControl() {//Changed PayFineControl to payFineControl --Dilkushi 21.08pm
 		this.liBrArY = liBrArY.INSTANCE();//Changed LiBrArY to liBrArY --Dilkushi 20.52pm
 		stAtE = CONTROL_STATE.INITIALISED;//Changed StAtE to stAtE --Dilkushi 20.52pm
 	}
 	
 	
-	public void Set_UI(PayFineUI ui) {
+	public void set_UI(PayFineUI ui) {//Changed Set_UI to set_UI --Dilkushi 21.08pm
 		if (!stAtE.equals(CONTROL_STATE.INITIALISED)) {//Changed StAtE to stAtE --Dilkushi 20.52pm	
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
@@ -24,7 +24,7 @@ public class PayFineControl {
 	}
 
 
-	public void Card_Swiped(int memberId) {
+	public void card_Swiped(int memberId) {//Changed Card_Swiped to card_Swiped --Dilkushi 21.08pm
 		if (!stAtE.equals(CONTROL_STATE.READY)) {//Changed StAtE to stAtE --Dilkushi 20.52pm
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 		}	
@@ -41,13 +41,13 @@ public class PayFineControl {
 	}
 	
 	
-	public void CaNcEl() {
+	public void caNcEl() {//Changed CaNcEl to caNcEl --Dilkushi 21.08pm
 		Ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
 		stAtE = CONTROL_STATE.CANCELLED;//Changed StAtE to stAtE --Dilkushi 20.52pm
 	}
 
 
-	public double PaY_FiNe(double amOuNt) {//Changed AmOuNt to amOuNt --Dilkushi 20.52pm
+	public double paY_FiNe(double amOuNt) {//Changed AmOuNt to amOuNt --Dilkushi 20.52pm //Changed PaY_FiNe to paY_FiNe --Dilkushi 21.08pm
 		if (!stAtE.equals(CONTROL_STATE.PAYING)) {//Changed StAtE to stAtE --Dilkushi 20.52pm
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 		}	
