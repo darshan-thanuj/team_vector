@@ -11,7 +11,7 @@ public class PayFineUI {
 	private UI_STATE stAtE;//Changed StAtE to stAtE -Dilkushi at 21.19pm
 
 	
-	public PayFineUI(PayFineControl control) {
+	public payFineUI(PayFineControl control) {//Changed PayFineUI to payFineUI -Dilkushi at 21.19pm
 		this.coNtRoL = control;//Changed CoNtRoL to coNtRoL -Dilkushi at 21.19pm
 		input = new Scanner(System.in);
 		stAtE = UI_STATE.INITIALISED;//Changed StAtE to stAtE -Dilkushi at 21.19pm
@@ -39,7 +39,7 @@ public class PayFineUI {
 				}
 				try {
 					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					CoNtRoL.Card_Swiped(Member_ID);
+					coNtRoL.Card_Swiped(Member_ID);//Changed CoNtRoL to coNtRoL -Dilkushi at 21.19pm
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -50,7 +50,7 @@ public class PayFineUI {
 				double amouNT = 0;//Changed AmouNT to amouNT -Dilkushi at 21.19pm
 				String amt_Str = input("Enter amount (<Enter> cancels) : ");//Changed amt_Str to Amt_Str -Dilkushi at 21.19pm
 				if (Amt_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+					coNtRoL.CaNcEl();//Changed CoNtRoL to coNtRoL -Dilkushi at 21.19pm
 					break;
 				}
 				try {
@@ -61,7 +61,7 @@ public class PayFineUI {
 					output("Amount must be positive");
 					break;
 				}
-				CoNtRoL.PaY_FiNe(AmouNT);
+				coNtRoL.PaY_FiNe(AmouNT);//Changed CoNtRoL to coNtRoL -Dilkushi at 21.19pm
 				break;
 								
 			case CANCELLED:
@@ -92,7 +92,7 @@ public class PayFineUI {
 	}	
 			
 
-	public void DiSplAY(Object object) {
+	public void DiSplAY(Object object) {//Changed DiSplAY to diSplAY -Dilkushi at 21.19pm
 		output(object);
 	}
 
