@@ -31,7 +31,7 @@ public class PayFineControl {
 		meMbEr = LiBrArY.MEMBER(memberId);//Changed MeMbEr to meMbEr --Dilkushi 12.18pm
 
 		
-		if (MeMbEr == null) {
+		if (meMbEr == null) {//Changed MeMbEr to meMbEr --Dilkushi 12.26pm
 			Ui.DiSplAY("Invalid Member Id");
 			return;
 		}
