@@ -50,26 +50,26 @@ public class ReturnBookControl {
 		if (CurrENT_loan.OVer_Due()) {
 			Ui.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
 		}
-		Ui.Set_State(ReturnBookUI.UI_STATE.INSPECTING);
+		ui.set_State(ReturnBookUI.UI_STATE.INSPECTING);//Changed Ui to ui Dilkushi 11.01pm////Changed Set_State to set_State Dilkushi 11.01pm	
 		sTaTe = CONTROL_STATE.INSPECTING;		
 	}
 
 
-	public void Scanning_Complete() {
+	public void scanning_Complete() {//Changed Scanning_Complete to Scanning_Complete Dilkushi 10.52pm
 		if (!sTaTe.equals(CONTROL_STATE.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
-		Ui.Set_State(ReturnBookUI.UI_STATE.COMPLETED);		
+		ui.set_State(ReturnBookUI.UI_STATE.COMPLETED);//Changed Ui to ui Dilkushi 11.01pm////Changed Set_State to set_State Dilkushi 11.01pm	
 	}
 
 
-	public void Discharge_loan(boolean isDamaged) {
+	public void discharge_loan(boolean isDamaged) {//Changed Discharge_loan to discharge_loan Dilkushi 11.01pm
 		if (!sTaTe.equals(CONTROL_STATE.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
 		lIbRaRy.Discharge_loan(CurrENT_loan, isDamaged);
-		CurrENT_loan = null;
-		Ui.Set_State(ReturnBookUI.UI_STATE.READY);
+		currENT_loan = null;//Changed CurrENT_loan to currENT_loan Dilkushi 10.52pm
+		ui.Set_State(ReturnBookUI.UI_STATE.READY);//Changed Ui to ui Dilkushi 11.01pm	
 		sTaTe = CONTROL_STATE.READY;				
 	}
 
