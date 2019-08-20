@@ -48,33 +48,33 @@ public class library implements Serializable {
 	}
 
 	
-	public static synchronized library INSTANCE() {		
+	public static synchronized library Instance() {	// changed INSTANCE TO Instance -darshan-08/20/2019	
 		if (Self== null) {
-			Path PATH = Paths.get(libraryFile);			
-			if (Files.exists(PATH)) {	
-				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
+			Path Path = Paths.get(libraryFile);// changed PATH to Path- darshan-08/20/2019			
+			if (Files.exists(Path)) {	// changed PATH to Path- darshan-08/20/2019
+				try (ObjectInputStream lif = new ObjectInputStream(new FileInputStream(libraryFile));) { // changed LiF to lif-darshan-08/20/2019
 			    
-					SeLf = (library) LiF.readObject();
-					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
-					LiF.close();
+					Self = (library) lif.readObject(); // changed SeLf to self and Lif to lif -darshan - 08/20/2019
+					Calendar.INSTANCE().Set_dATE(Self.LOAN_DATE); // changed to sElf to Self- darshan - 08/20/2019
+					LiF.close();//LiFchnaged to lif -darshan-08/20/2019
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else SeLf = new library();
+			else Self = new library();
 		}
-		return SeLf;
+		return Self;
 	}
 
 	
-	public static synchronized void SAVE() {
-		if (SeLf != null) {
-			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
-			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
-				LoF.writeObject(SeLf);
-				LoF.flush();
-				LoF.close();	
+	public static synchronized void save() {// changed SAVE to save- drashan-20/08/2019
+		if (Self != null) {
+			SeLf.loanDate = Calendar.INSTANCE().Date();// changed LOAN_DATE to loanDate
+			try (ObjectOutputStream lof = new ObjectOutputStream(new FileOutputStream(libraryFile));) {//changed LoFto lof-darshan-20/08/2019
+				lof.writeObject(SeLf);
+				lof.flush();
+				lof.close();	
 			}
 			catch (Exception e) {
 				throw new RuntimeException(e);
@@ -83,56 +83,56 @@ public class library implements Serializable {
 	}
 
 	
-	public int BookID() {
-		return BOOK_ID;
+	public int bookId() { // changed BookID to bookId-darshan-08/20/2019
+		return bookId;
 	}
 	
 	
-	public int MemberID() {
-		return MEMBER_ID;
+	public int memberId() { // changed MemberID to memberID-darshan-08/20/2019
+		return memberId;
 	}
 	
 	
-	private int NextBID() {
-		return BOOK_ID++;
+	private int nextBid() { // changed NextBID to nextBid-darshan-08/20/2019
+		return bookId++;
 	}
 
 	
-	private int NextMID() {
-		return MEMBER_ID++;
+	private int nextmid() {//changed NextMID to nextmid-darshan-08/20/2019
+		return memberId++;
 	}
 
 	
-	private int NextLID() {
-		return LOAN_ID++;
+	private int nextlid(){ // changed NextLID nextlid-arshan-08/20/2019
+		return loanid++;
 	}
 
 	
-	public List<member> MEMBERS() {		
-		return new ArrayList<member>(MEMBERS.values()); 
+	public List<member> members() {	// changed MEMBERS to members darshan-08/20/2019
+		return new ArrayList<member>(members.values());
 	}
 
 
-	public List<book> BOOKS() {		
-		return new ArrayList<book>(CATALOG.values()); 
+	public List<book> books(){ // changed BOOKS to books darshan-08/20/2019
+		return new ArrayList<book>(catalog.values()); // changed CATALOG TO catalog
 	}
 
 
-	public List<loan> CurrentLoans() {
-		return new ArrayList<loan>(CURRENT_LOANS.values());
+	public List<loan> currentLoans() { // changed CurrentLoans to CurrentLoans-darshan-08/20/2019
+		return new ArrayList<loan>(currentLoans.values());
 	}
 
 
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
-		member member = new member(lastName, firstName, email, phoneNo, NextMID());
-		MEMBERS.put(member.GeT_ID(), member);		
+	public memberAddMem(String lastName, String firstName, String email, int phoneNo) { //changed Add member Add_mem to memberAddMem-darshan-08/20/2019
+		member member = new member(lastName, firstName, email, phoneNo, NextMid());
+		members.put(member.GeT_ID(), member);		
 		return member;
 	}
 
 	
-	public book Add_book(String a, String t, String c) {		
-		book b = new book(a, t, c, NextBID());
-		CATALOG.put(b.ID(), b);		
+	public book add_book(String a, String t, String c) {	// changed Add_book to add_book-darshan-08/20/2019
+		book b = new book(a, t, c, NextBid());
+		catalog.put(b.ID(), b);		
 		return b;
 	}
 
