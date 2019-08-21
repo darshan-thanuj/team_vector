@@ -15,11 +15,11 @@ public class ReturnBookUI {
 		this.coNtRoL = control;//changed CoNtRoL to coNtRoL- Dilkushi 19.24pm
 		input = new Scanner(System.in);
 		stATe = UI_STATE.INITIALISED;//changed StATe to stATe- Dilkushi 19.24pm
-		control.Set_UI(this);
+		control.set_UI(this);//changed Set_UI to set_UI- Dilkushi 19.45pm
 	}
 
 
-	public void RuN() {		
+	public void ruN() {	//changed RuN to ruN- Dilkushi 19.40pm	
 		output("Return Book Use Case UI\n");
 		
 		while (true) {
@@ -59,7 +59,7 @@ public class ReturnBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + StATe);			
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + stATe);	//changed StATe to stATe- Dilkushi 19.40pm		
 			}
 		}
 	}
@@ -80,8 +80,8 @@ public class ReturnBookUI {
 		output(object);
 	}
 	
-	public void Set_State(UI_STATE state) {
-		this.StATe = state;
+	public void set_State(UI_STATE state) {//changed Set_State to set_State- Dilkushi 19.40pm
+		this.stATe = state;//changed StATe to stATe- Dilkushi 19.40pm
 	}
 
 	
