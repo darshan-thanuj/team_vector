@@ -37,7 +37,7 @@ public class ReturnBookUI {
 				else {
 					try {
 						int Book_Id = Integer.valueOf(book_STR).intValue();//changed Book_STR to book_STR- Dilkushi 19.24pm
-						CoNtRoL.Book_scanned(Book_Id);
+						coNtRoL.Book_scanned(Book_Id);//changed CoNtRoL to coNtRoL- Dilkushi 19.35pm
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -47,9 +47,9 @@ public class ReturnBookUI {
 				
 			case INSPECTING:
 				String ans = input("Is book damaged? (Y/N): ");
-				boolean Is_Damaged = false;
+				boolean is_Damaged = false;//changed Is_Damaged to is_Damaged- Dilkushi 19.35pm
 				if (ans.toUpperCase().equals("Y")) {					
-					Is_Damaged = true;
+					is_Damaged = true;//changed Is_Damaged to is_Damaged- Dilkushi 19.35pm
 				}
 				CoNtRoL.Discharge_loan(Is_Damaged);
 			
