@@ -5,15 +5,16 @@ public class ReturnBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
 
-	private ReturnBookControl CoNtRoL;
+	private ReturnBookControl coNtRoL;//changed CoNtRoL to coNtRoL- Dilkushi 19.24pm
+
 	private Scanner input;
-	private UI_STATE StATe;
+	private UI_STATE stATe;//changed StATe to stATe- Dilkushi 19.24pm
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
-		this.CoNtRoL = control;
+		this.coNtRoL = control;//changed CoNtRoL to coNtRoL- Dilkushi 19.24pm
 		input = new Scanner(System.in);
-		StATe = UI_STATE.INITIALISED;
+		stATe = UI_STATE.INITIALISED;//changed StATe to stATe- Dilkushi 19.24pm
 		control.Set_UI(this);
 	}
 
@@ -23,19 +24,19 @@ public class ReturnBookUI {
 		
 		while (true) {
 			
-			switch (StATe) {
+			switch (stATe) {//changed StATe to stATe- Dilkushi 19.24pm
 			
 			case INITIALISED:
 				break;
 				
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
+				String book_STR = input("Scan Book (<enter> completes): ");//changed Book_STR to book_STR- Dilkushi 19.24pm
 				if (Book_STR.length() == 0) {
-					CoNtRoL.Scanning_Complete();
+					coNtRoL.Scanning_Complete();//changed CoNtRoL to coNtRoL- Dilkushi 19.24pm
 				}
 				else {
 					try {
-						int Book_Id = Integer.valueOf(Book_STR).intValue();
+						int Book_Id = Integer.valueOf(book_STR).intValue();//changed Book_STR to book_STR- Dilkushi 19.24pm
 						CoNtRoL.Book_scanned(Book_Id);
 					}
 					catch (NumberFormatException e) {
