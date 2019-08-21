@@ -2,12 +2,12 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Book implements Serializable {
-    private String title;
-    private String author;
-    private String callNo;
+    private String title; // Changed from TITLE to title  -Suchan, 08/13/19-8:00pm
+    private String author; // Changed from AUTHOR to author  -Suchan, 08/13/19-8:00pm
+    private String callNo; // Changed from CALL_NO to callNo  -Suchan, 08/13/19-8:00pm
     private int id;
 
-    private enum State {
+    private enum State { // Changed from StaTe to State  -Suchan, 08/13/19-8:00pm
         AVAILABLE, ON_LOAN, DAMAGED, RESERVED
     };
 
