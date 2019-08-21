@@ -137,67 +137,68 @@ public class library implements Serializable {
 	}
 
 	
-	public member MEMBER(int memberId) {
-		if (MEMBERS.containsKey(memberId)) 
+	public member member(int memberId) { // changed MEMEBER to member -drashan- 08/21/2019
+		if (members.containsKey(memberId)) 
 			return MEMBERS.get(memberId);
 		return null;
 	}
 
 	
-	public book Book(int bookId) {
-		if (CATALOG.containsKey(bookId)) 
-			return CATALOG.get(bookId);		
+	public book book(int bookId) { //changed Book to book -darshan-08/21/2019
+		if (catalog.containsKey(bookId)) //changed CATALOG TO catalog-darshan-08/21/2019
+			return catalog.get(bookId);		
 		return null;
 	}
 
 	
-	public int LOAN_LIMIT() {
+	public int loan_Limit() { // changed LOAN_LIMIT to loan_Limt-darshan-08/21/2019
 		return loanLimit;
 	}
 
 	
-	public boolean MEMBER_CAN_BORROW(member member) {		
+	public boolean member_Can_Brrow(member member) { // changed MEMBER_CAN_BORROW TO MEMEBR_Can_Borrow-darshan-08/21/2019	
 		if (member.Number_Of_Current_Loans() == loanLimit ) 
 			return false;
 				
-		if (member.Fines_OwEd() >= maxFinesOwed) 
+		if (member.fines_Owed() >= maxFinesOwed) // changed Fines_OwEd to fines_Owed -darshan-08/21/2019
 			return false;
 				
-		for (loan loan : member.GeT_LoAnS()) 
-			if (loan.OVer_Due()) 
+		for (loan loan : member.get_Loans())// changed Get-LoAns to get_Loans -darshan- 08/21/2019 
+			if (loan.over_Due()) // changed OVer_Due to over_Due-darshan-08/21/2019
 				return false;
 			
 		return true;
 	}
 
 	
-	public int Loans_Remaining_For_Member(member member) {		
-		return loanLimit - member.Number_Of_Current_Loans();
+	public int Loans_Remaining_For_Member(member member) {	// changed Loans_Remaining_For_Member to loans_Remaining_For_Member-drashan-08/21/2019	
+		return loanLimit - member.number_Of_Current_Loans();// changed Number_Of_Current_Loans to number_Of_Current_Loans-darshan-08/21/2019
 	}
 
 	
-	public loan ISSUE_LAON(book book, member member) {
+	public loan issue_Loan(book book, member member) {// changed ISSUE_LAON to issue_Loan -darshan - 08/21/2019
 		Date dueDate = Calendar.INSTANCE().Due_Date(loanPeriod);
 		loan loan = new loan(NextLID(), book, member, dueDate);
-		member.Take_Out_Loan(loan);
+		member.take_out_loan(loan);// changed Take_Out_Loan to take_out_loan -darshan-08/21/2019 
 		book.Borrow();
-		LOANS.put(loan.ID(), loan);
-		CURRENT_LOANS.put(book.ID(), loan);
+		loans.put(loan.ID(), loan);
+		current_Loans.put(book.ID(), loan);
 		return loan;
 	}
 	
 	
-	public loan LOAN_BY_BOOK_ID(int bookId) {
-		if (CURRENT_LOANS.containsKey(bookId)) {
-			return CURRENT_LOANS.get(bookId);
+	public loan loan_by_bookId(int bookId) {// changed LOAN_BY_BOOK_ID to loan_by_bookId-darshan-08/21/2019
+		if (current_Loans.containsKey(bookId)) {
+			return current_loans.get(bookId);
 		}
 		return null;
 	}
 
 	
-	public double CalculateOverDueFine(loan loan) {
-		if (loan.OVer_Due()) {
-			long daysOverDue = Calendar.INSTANCE().Get_Days_Difference(loan.Get_Due_Date());
+	public double calculateOverDueFine(loan loan) { //changed CalculateOverDueFine to calculateOverDueFine-darshan-08/21/2019
+		if (loan.Over_Due()) { // chganged OVer_Due to over_Due -darshan-08/21/2019
+			long daysOverDue = Calendar.INSTANCE().Get_Days_Difference(loan.Get_Due_Date()); // changed Get_Days_Difference to 
+			                                                                                  // get_Days_Difference-drashan-08/21/2019
 			double fine = daysOverDue * finePerDay;
 			return fine;
 		}
@@ -205,35 +206,35 @@ public class library implements Serializable {
 	}
 
 
-	public void Discharge_loan(loan currentLoan, boolean isDamaged) {
+	public void Discharge_loan(loan currentLoan, boolean isDamaged) { // changed Discharge_loan to discharge_loan-darshan-08/21/2019
 		member member = currentLoan.Member();
 		book book  = currentLoan.Book();
 		
-		double overDueFine = CalculateOverDueFine(currentLoan);
-		member.Add_Fine(overDueFine);	
+		double overDueFine = CalculateOverDueFine(currentLoan);// changed CalculateOverDueFine to calculateOverDueFine -darshan-08/21/2019
+		member.Add_Fine(overDueFine);//changed 	Add_Fine to add_Fin - drasha-08/21/2019
 		
-		member.dIsChArGeLoAn(currentLoan);
+		member.dischargeLoan(currentLoan);//chnaged dIsChArGeLoAn to dischargeLoan -darshan-08/21/2019
 		book.Return(isDamaged);
 		if (isDamaged) {
-			member.Add_Fine(damageFee);
-			DAMAGED_BOOKS.put(book.ID(), book);
+			member.add_Fine(damageFee);
+			damaged_Books.put(book.ID(), book);//changed DAMAGED_BOOKS to damaged_Books-darshan-08/21/2019
 		}
-		currentLoan.DiScHaRgE();
-		CURRENT_LOANS.remove(book.ID());
+		currentLoan.DiScHaRgE();//changed DiScHaRgE to discharge - darshan-08/21/2019
+		current_loans.remove(book.ID());// changed CURRENT_LOANS to current_loans-darshan-08/21/2019
 	}
 
 
 	public void checkCurrentLoans() {
-		for (loan loan : CURRENT_LOANS.values()) {
+		for (loan loan : current_loans.values()) {// changed CURRENT_LOANS to current_loans-darshan-08/21/2019
 			loan.checkOverDue();
 		}		
 	}
 
 
-	public void Repair_BOOK(book currentBook) {
-		if (DAMAGED_BOOKS.containsKey(currentBook.ID())) {
+	public void Repair_BOOK(book currentBook) { // changed Repair_BOOK to repair_Book-darshan-08/21/2019
+		if (damaged_Books.containsKey(currentBook.ID())) { //changed DAMAGED_BOOKS to damaged_Books-darshan-08/21/2019
 			currentBook.Repair();
-			DAMAGED_BOOKS.remove(currentBook.ID());
+			damaged_Books.remove(currentBook.ID());
 		}
 		else {
 			throw new RuntimeException("Library: repairBook: book is not damaged");

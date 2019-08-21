@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner IN;
-	private static library LIB;
-	private static String MENU;
-	private static Calendar CAL;
-	private static SimpleDateFormat SDF;
+	private static Scanner IN; //changed IN to in -darshan-08-21-2019
+	private static library LIB;//changed LIB to lib- darshan -08-21-2019
+	private static String MENU;// changed MENU to menu -darshan-08-21-2019
+	private static Calendar CAL;//changed CAL to cal -darshan-08-21-2019
+	private static SimpleDateFormat SDF; //changed SDF to sdf-darshan-08-21-2019
 	
 	
-	private static String Get_menu() {
-		StringBuilder sb = new StringBuilder();
+	private static String get_menu() { // changed Get_menu to get_menu -darshan-08/21/2019
+		stringBuilder sb = new StringBuilder();  // changed StringBuilde to stringBuilder-darshan-08/21/2019
 		
 		sb.append("\nLibrary Main Menu\n\n")
 		  .append("  M  : add member\n")
@@ -39,68 +39,68 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = library.INSTANCE();
-			CAL = Calendar.INSTANCE();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+			in = new Scanner(System.in); //cahanged IN to in -drahan-08/21/019
+			lib = library.INSTANCE();//cahanged LIB to lib -drahan-08/21/019
+			cal = Calendar.INSTANCE();//cahanged CAL to cal -drahan-08/21/019
+			sdf = new SimpleDateFormat("dd/MM/yyyy");//cahanged SDF to sdf -drahan-08/21/019
 	
-			for (member m : LIB.MEMBERS()) {
+			for (member m : lib.MEMBERS()) { //cahanged LIB to lib -drahan-08/21/019
 				output(m);
 			}
 			output(" ");
-			for (book b : LIB.BOOKS()) {
+			for (book b : lib.BOOKS()) {//cahanged LIB to lib -drahan-08/21/019
 				output(b);
 			}
 						
-			MENU = Get_menu();
+			menu = Get_menu();//cahanged MENU to menu -drahan-08/21/019
 			
 			boolean e = false;
 			
 			while (!e) {
 				
-				output("\n" + SDF.format(CAL.Date()));
+				output("\n" + sdf.format(CAL.Date()));//cahanged SDF to sdf -darhan-08/21/2019
 				String c = input(MENU);
 				
 				switch (c.toUpperCase()) {
 				
 				case "M": 
-					ADD_MEMBER();
+					add_member();// changed ADD_MEMBER to add_member-drashan-08/21/2019
 					break;
 					
 				case "LM": 
-					MEMBERS();
+					memebrs();// changed MEMEBERS to members-darshan-08/21/2019
 					break;
 					
 				case "B": 
-					ADD_BOOK();
+					add_Book();// changed ADD_book to add_Book-darshan-08/21/2019
 					break;
 					
 				case "LB": 
-					BOOKS();
+					books();// changed BOOKS to books-darshan-08/21/2019
 					break;
 					
 				case "FB": 
-					FIX_BOOKS();
+					FIX_BOOKS();// changed FIX_BOOKS to fix_Books-darshan-08/21/2019
 					break;
 					
 				case "L": 
-					BORROW_BOOK();
+					BORROW_BOOK();// changed BORROW_BOOK to borrow_Book-darshan-08/21/2019
 					break;
 					
 				case "R": 
-					RETURN_BOOK();
+					Return_Book();// changed RETURN_BOOK to return_Book-darshan-08/21/2019
 					break;
 					
 				case "LL": 
-					CURRENT_LOANS();
+					current_loan();//// changed CURRENT_LOAN to current_loan-darshan-08/21/2019
 					break;
 					
 				case "P": 
-					FINES();
+					fines();// changed FINES to fines-darshan-08/21/2019
 					break;
 					
 				case "T": 
-					INCREMENT_DATE();
+					increment_Date();// changed INCREMENT_DATE to increment_Date-darshan-08/21/2019
 					break;
 					
 				case "Q": 
@@ -120,54 +120,55 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private static void FINES() {
+	
+	private static void fines() { //// changed FINES to fines-darshan-08/21/2019
 		new PayFineUI(new PayFineControl()).RuN();		
 	}
 
 
-	private static void CURRENT_LOANS() {
+	private static void current_Loans() { // changed CURRENT_LOANS to current_Loans-darshan-08/21/2019
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (loan loan : lib.CurrentLoans()) {
 			output(loan + "\n");
 		}		
 	}
 
 
 
-	private static void BOOKS() {
+	private static void books() { // changed BOOKS to books-darshan-08/21/2019
 		output("");
-		for (book book : LIB.BOOKS()) {
+		for (book book : lib.BOOKS()) {
 			output(book + "\n");
 		}		
 	}
 
 
 
-	private static void MEMBERS() {
+	private static void members() { // changed MEMEBERS to members-darshan-08/21/2019
 		output("");
-		for (member member : LIB.MEMBERS()) {
+		for (member member : lib.memebrs()) {
 			output(member + "\n");
 		}		
 	}
 
 
 
-	private static void BORROW_BOOK() {
+	private static void borrow_Books() { // changed BORROW_BOOKS to borrow_Books-darshan-08/21/2019
 		new BorrowBookUI(new BorrowBookControl()).run();		
 	}
 
 
-	private static void RETURN_BOOK() {
+	private static void return_Book() { // changed RETURN_BOOK to return_Book-darshan-08/21/2019
 		new ReturnBookUI(new ReturnBookControl()).RuN();		
 	}
 
 
-	private static void FIX_BOOKS() {
+	private static void fix_Books() { // changed FIX_BOOKS to fix_Books-darshan-08/21/2019
 		new FixBookUI(new FixBookControl()).RuN();		
 	}
 
 
-	private static void INCREMENT_DATE() {
+	private static void increment_Date() { // changed INCREMENT_DATE to increment_Date-darshan-08/21/2019
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			CAL.incrementDate(days);
@@ -180,24 +181,24 @@ public class Main {
 	}
 
 
-	private static void ADD_BOOK() {
+	private static void add_Book() { // changed ADD_BOOK to add_Book-darshan-08/21/2019
 		
-		String A = input("Enter author: ");
-		String T  = input("Enter title: ");
-		String C = input("Enter call number: ");
-		book B = LIB.Add_book(A, T, C);
+		String a = input("Enter author: ");// changed A to a-darshan-08/21/2019
+		String t  = input("Enter title: ");// changed T to t-darshan-08/21/2019
+		String c = input("Enter call number: ");// changed C to c-darshan-08/21/2019
+		book B = LIB.Add_book(A, T, C); // changed B to b-darshan-08/21/2019
 		output("\n" + B + "\n");
 		
 	}
 
 	
-	private static void ADD_MEMBER() {
+	private static void add_Memebrs() { // // changed ADD_MEMBERS to add_Members-darshan-08/21/2019
 		try {
-			String LN = input("Enter last name: ");
-			String FN  = input("Enter first name: ");
-			String EM = input("Enter email: ");
-			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = LIB.Add_mem(LN, FN, EM, PN);
+			String ln = input("Enter last name: "); // changed LN to ln-darshan-08/21/2019
+			String fn  = input("Enter first name: ");// changed FN to fn-darshan-08/21/2019
+			String em = input("Enter email: ");// changed EM to em-darshan-08/21/2019
+			int pn = Integer.valueOf(input("Enter phone number: ")).intValue();// changed PN to pn-darshan-08/21/2019
+			member m = LIB.Add_mem(ln, fn, em, pn);// changed M to m-darshan-08/21/2019
 			output("\n" + M + "\n");
 			
 		} catch (NumberFormatException e) {
