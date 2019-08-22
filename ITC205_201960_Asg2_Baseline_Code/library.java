@@ -206,11 +206,11 @@ public class library implements Serializable {
 	}
 
 
-	public void Discharge_loan(loan currentLoan, boolean isDamaged) { // changed Discharge_loan to discharge_loan-darshan-08/21/2019
+	public void discharge_loan(loan currentLoan, boolean isDamaged) { // changed Discharge_loan to discharge_loan-darshan-08/21/2019
 		member member = currentLoan.Member();
 		book book  = currentLoan.Book();
 		
-		double overDueFine = CalculateOverDueFine(currentLoan);// changed CalculateOverDueFine to calculateOverDueFine -darshan-08/21/2019
+		double overDueFine = calculateOverDueFine(currentLoan);// changed CalculateOverDueFine to calculateOverDueFine -darshan-08/21/2019
 		member.Add_Fine(overDueFine);//changed 	Add_Fine to add_Fin - drasha-08/21/2019
 		
 		member.dischargeLoan(currentLoan);//chnaged dIsChArGeLoAn to dischargeLoan -darshan-08/21/2019
@@ -219,7 +219,7 @@ public class library implements Serializable {
 			member.add_Fine(damageFee);
 			damaged_Books.put(book.ID(), book);//changed DAMAGED_BOOKS to damaged_Books-darshan-08/21/2019
 		}
-		currentLoan.DiScHaRgE();//changed DiScHaRgE to discharge - darshan-08/21/2019
+		currentLoan.discharge();//changed DiScHaRgE to discharge - darshan-08/21/2019
 		current_loans.remove(book.ID());// changed CURRENT_LOANS to current_loans-darshan-08/21/2019
 	}
 
